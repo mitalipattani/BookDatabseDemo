@@ -2,9 +2,14 @@ package com.ciccc_cirac.bookdatabsedemo;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by CICCC-CIRAC on 2017-08-14.
@@ -65,4 +70,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //close the database connection
         db1.close();
     }
+
+    public List<Book> getAllBooks()
+    {
+        List<Book> books = new LinkedList<Book>();
+        //TODO 8) Create a select query
+        String query = "SELECT * FROM " + TABLE_NAME;
+        //TODO 9) Get instance of database in READABLE mode
+        SQLiteDatabase db = this.getReadableDatabase();
+        //TODO 10) get cursor object for result of query
+        Cursor cursor = db.rawQuery(query,null);
+        //rawquery directly accepts SQL statement
+        //as its input and it returns cursor object
+        //which will point to one row of query result
+
+        //TODO 11) Go over result and build BOOK object and
+        // add it to the list
+
+        Book book = null;
+        if(cursor.moveToFirst())
+    {
+        do{
+            book =  new Book();
+            book.setId(Integer.parseInt(cursor.getString(0)));
+            book.setTitle(cursor.getString(1));
+            book.setAuthor(cursor.getString(2));
+            books.add(book);
+        }while(cursor.moveToNext());
+    }
+    return books;
+    }
+
 }

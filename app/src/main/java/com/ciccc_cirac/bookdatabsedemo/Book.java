@@ -7,6 +7,11 @@ package com.ciccc_cirac.bookdatabsedemo;
 public class Book {
     private int id;
     private String title, author;
+    //default constructor
+    public Book()
+    {
+
+    }
 
     public Book(String title, String author)
     {
