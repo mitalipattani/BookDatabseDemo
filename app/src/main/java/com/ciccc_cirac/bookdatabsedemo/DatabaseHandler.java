@@ -137,18 +137,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     public Book readBook(int selectedID){
         // open the database of the application context
         SQLiteDatabase db = this.getReadableDatabase();
@@ -169,8 +157,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return book;
     }
-
-
 
 
 }
