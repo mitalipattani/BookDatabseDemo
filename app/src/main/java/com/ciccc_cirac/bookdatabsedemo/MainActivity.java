@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_update:
                 //empty object of book
                 Book book = new Book();
+                //assign the values
                 book.setId(selectedID);
                 book.setTitle(booktitle.getText().toString());
                 book.setAuthor(bookauthor.getText().toString());
@@ -78,8 +79,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         "ROWS "+ rowAffected + " ARE UPDATED",
                         Toast.LENGTH_SHORT).show();
                 break;
+                 //create a book object with selected ID
+            // Pass this book object to delete method
+            // to DatabaseHandler.java
             case R.id.button_delete:
+                   //empty object of book
                 Book book1 = new Book();
+                //assign the values
                 book1.setId(selectedID);
                 book1.setTitle(booktitle.getText().toString());
                 book1.setAuthor(bookauthor.getText().toString());
